@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events </title>
+</head>
+<body>
+    <div class="event-add-form">
+        <div class="sort">
+            <a href="/">Home Page</a>
+            <a href="/events/date">Sort by date</a>
+        </div>
+        <div class="headings">
+            <h2>List of events</h2>
+        </div>
+        <div class="search">
+            <form action="/events/search/city" method="POST">
+                <input type="text" name="search" placeholder="search by location">
+                <button>Search by location</button>
+            </form>
+        </div>
+        <% events.forEach(event => { %>
+            <li id="card">
+                <h5><%= event.title %></h5>
+                <p class="summary"><%= event.summary.substring(0,100).concat('...') %></p>
+                <p class="host">Hosted by <span><%= event.host %></span></p>
+                <p class="date">
+                    <span><%= event.start_date %></span>To
+                    <span><%= event.last_date %></span>
+                </p>
+                <p>Category<span><%= event.category %></span></p>
+                <p class="like">Likes <span><%= event.likes %></span></p>
+                <p><i class="fas fa-map-marker-alt"></i> <%= event.location%></p>
+                <a href="/events/<%= event.id%>">
+                 <button>See more</button>
+                 </a>
+
+            </li>
+        <% }) %>
+        <a href="events/new">
+            <button >Add a new event</button>
+        </a>
+        <%- include('../partials/footer') -%>
+    </div>
+</body>
+</html>
