@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+</head>
+<body>
+    <div class="event-add-form">
+        <div class="headings">
+        <h2>Welcome to the Event Management </h2>
+        <h3>Add a event</h3>
+    </div>
+    <div class="formgroup">
+        <form id="form" action="/events" method="POST">
+            <label for="">Title</label>
+            <input type="text" name="title" class="event-form-input"/>
+            <label for="">summary</label>
+            <textarea name="summary" rows="10" cols="30" class="event-form-input"></textarea>
+            <label for="">host</label>
+            <input type="text" name="host" class="event-form-input"/>
+            <label for="">start Date</label>
+            <input type="date" name="start_date" class="event-form-input"/>
+            <label for="">End Date</label>
+            <input type="date" name="end_date" class="event-form-input"/>
+            <label for="">Category</label>
+            <input type="text" name="category" class="event-form-input"/>
+            <label for="">Location</label>
+            <input type="text" name="location" class="event-form-input"/>
+            <input id="btn" type="submit" name="submit" value="Add Event" class="event-add">
+        </form>
+    </div>
+</div>
+</body>
+</html>

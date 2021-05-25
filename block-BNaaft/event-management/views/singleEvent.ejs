@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Event</title>
+</head>
+<body>
+    <a href="/">Home Page</a>
+    <a href="/events">Events Page</a>
+    <div class="event-add-form" id="single">
+        <div class="events">
+            <a href="/events">Go to Events</a>
+        </div>
+        <div class="headings">
+            <h2>List of events</h2>
+        </div>
+        <li class="detail-event">
+            <h4><%= event.title %></h4>
+            <p class="summary"><%= event.summary %></p>
+            <p class="host"><%= event.host %></p>
+            <p class="date">
+             Start Date  <span> <%= event.start_date %></span>
+            </p>
+            <p class="date">
+                End Date  <span> <%= event.end_date %></span>
+            </p>
+            <p>Category<span><%= event.category %></span></p>
+            <p class="like"> Likes <span><%= event.likes %></span></p>
+            <p class="loc">Location <span><%= event.location %></span></p>
+
+            <div>
+                <a href="/events/<%= event.id %>/edit">
+                    <button>Edit</button>
+                </a>
+            </div>
+            <div>
+                <a href="/events/<%= event.id %>/delete">
+                    <button>Edit</button>
+                </a>
+            </div>
+
+        </li>
+
+        <div class="remark-form">
+            <form action="/events/<%= event.id %>/remarks" method="POST">
+                <label for="">Title</label>
+                <input type="text" name="title" class="event-form-input">
+                <label for="">Author</label>
+                <input type="text" name="author" class="event-form-input">
+                <input type="submit" name="submit" value="Add Remarks" class="remark-sub">
+            </form>
+
+        </div>
+        <ul class="remark-list">
+            <% event.remarks.forEach(remark => { %>
+                <li id="remark">
+                    <h4><%= remark.title %></h4>
+                    <p class="host">Author <span><%= remark.author %></span></p>
+                    <p class="like">Likes <span><%= remark.likes%></span></p>
+                    <div class="dislike">
+                      <a href="/remarks/<%= remark.id%>/likes">
+                        <i class="far fa-thumbs-up"></i>
+                      </a>
+                      <a href="/remarks/<%= remark.id%>/dislikes">
+                        <i class="far fa-thumbs-down"></i>
+                      </a>
+                    </div>
+
+                    <div class="edit">
+                        <a href="/remarks/<%= remark.id%>/edit">
+                          <button>edit</button>
+                        </a>
+                        <a href="/remarks/<%= remark.id%>/delete">
+                          <button>Delete</button>
+                        </a>
+                      </div>
+
+                </li>
+            <% }) %>
+        </ul>
+        <%- include('../partials/footer') -%>
+    </div>    
+</body>
+</html>
+<!-- title:String,
+    summary:String,
+    host:String,
+    start_date:Date,
+    end_date:Date,
+    category:[String],
+    location:String,
+    likes:{type:Number,default:0},
+    remarks:[{type:Schema.Types.ObjectId,ref:"Remark"}] -->

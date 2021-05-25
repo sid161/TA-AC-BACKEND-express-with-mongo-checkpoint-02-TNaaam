@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Event</title>
+</head>
+<body>
+    <div class="event-add-form">
+        <div class="headings">
+            <h2>Welcome to events</h2>
+        </div>
+        <div class="formgroup">
+            <form id="form" action="/events/<%= event.id %>/edit" method="POST">
+                <label for="">title</label>
+                <input type="text" name="title" value="<%= event.title %>"/>
+                <label for="">summary</label>
+                <textarea  type="text" name="summary" class="event-form-input" cols="30" rows="10" class="event-form-input" value="<%= event.summary %>"></textarea>
+                <label for="">host</label>
+                <input type="text" name="host" value="<%= event.host %>"/>
+                <label for="">start_date</label>
+                <input type="date" name="start_date"  class = "event-form-input" value="<%= event.start_date %>"/>
+                <label for="">last_date</label>
+                <input type="date" name="end_date"  class = "event-form-input" value="<%= event.end_date %>"/>
+                <label for="">Category</label>
+                <input type="text" name="category"  class = "event-form-input" value="<%= event.category %>"/>
+                <label for="">location</label>
+                <input type="text" name="location"  class = "event-form-input" value="<%= event.location %>"/>
+                <input id="btn" type="submit" name="submit" value="update Event" class="event-add">
+            
+            </form>
+        </div>
+    </div>
+</body>
+</html>
